@@ -30,6 +30,10 @@ def main():
     ###############################################增加的语句##################################
     for json_file in json_list:
     ###############################################    end       ##################################
+        #######  新的名称，后面训练使用 具体的切片参数要看自己的文件名 ############
+        new_name = json_file[-15:-5]+'.png'
+        # print("新的名字为{}".format(new_name))
+        #######  END  #############################
         if args.out is None:
             out_dir = osp.basename(json_file).replace('.', '_')
             out_dir = osp.join(osp.dirname(json_file), out_dir)
@@ -65,7 +69,8 @@ def main():
         lbl_viz = utils.draw_label(lbl, img, label_names)
 
         PIL.Image.fromarray(img).save(osp.join(out_dir, 'img.png'))
-        utils.lblsave(osp.join(out_dir, 'label.png'), lbl)
+        ################### 第二次修改：将label.png 替换为对应文件夹的名称 ###########
+        utils.lblsave(osp.join(out_dir, new_name), lbl)
         PIL.Image.fromarray(lbl_viz).save(osp.join(out_dir, 'label_viz.png'))
 
         with open(osp.join(out_dir, 'label_names.txt'), 'w') as f:
