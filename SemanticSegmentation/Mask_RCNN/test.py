@@ -117,4 +117,3 @@ print("use_time",(b-a).seconds)
 r = results[0]
 visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'],
                             class_names, r['scores'])
- 
